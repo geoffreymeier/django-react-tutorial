@@ -1,7 +1,10 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	]
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "python.pythonPath": "/home/geoffreymeier/.local/share/virtualenvs/tweetme2-4u43R_7n/bin/python"
+    }
 }
