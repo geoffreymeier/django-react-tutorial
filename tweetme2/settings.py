@@ -25,7 +25,7 @@ SECRET_KEY = 'lb-s^_=$=e-2vtv!)#c8iagbxnq*njakzu)%rgz#&mu=4zqqer'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 LOGIN_URL = "/login"
 
@@ -46,12 +46,14 @@ INSTALLED_APPS = [
     #internal
     'tweets',
     #third-party
-    'rest_framework'
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -128,6 +130,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+
+]
+STATIC_ROOT = os.path.join(BASE_DIR, "static-root")
+
+CORS_ORIGIN_ALLOW_ALL = True #any website has access has access to my api
+CORS_URLS_REGEX = r'^/api/.*$'
 
 # REST_FRAMEWORK = {
 #     "DEFAULT_AUTHENTICATION_CLASSES": {
